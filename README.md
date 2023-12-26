@@ -1,1 +1,5 @@
-# 42_minitalk
+<div align="center">
+
+# MiniTalk
+
+</div>
