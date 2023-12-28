@@ -6,7 +6,7 @@
 /*   By: mloureir <mloureir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:09:09 by mloureir          #+#    #+#             */
-/*   Updated: 2023/12/28 10:36:35 by mloureir         ###   ########.fr       */
+/*   Updated: 2023/12/28 11:08:05 by mloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void passbytes(pid_t pid, char *str)
 	i = 0;
 	while (str[i])
 	{
-		ft_printf("%c", str[i]);
 		sendbyte(str[i], pid);
 		i++;
 	}
