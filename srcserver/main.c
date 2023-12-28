@@ -6,30 +6,28 @@
 /*   By: mloureir <mloureir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:09:10 by mloureir          #+#    #+#             */
-/*   Updated: 2023/12/28 12:25:28 by mloureir         ###   ########.fr       */
+/*   Updated: 2023/12/28 14:33:49 by mloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minitalk.h"
 
-void printchar(int *byte)
+void	printchar(int *byte)
 {
-	int i;
-	unsigned char print;
+	int				i;
+	unsigned char	print;
 
 	i = 7;
 	print = 0;
-	while(i >= 0)
-	{
+	while (i >= 0)
 		print = print * 2 + byte[i--];
-	}
 	ft_printf("%c", print);
 }
 
-void printbyte(pid_t signal)
+void	printbyte(pid_t signal)
 {
-	static int bits;
-	static int byte[8];
+	static int	bits;
+	static int	byte[8];
 
 	if (signal == SIGUSR1)
 		byte[bits++] = 0;
@@ -42,9 +40,9 @@ void printbyte(pid_t signal)
 	}
 }
 
-int main(void)
+int	main(void)
 {
-	pid_t pid;
+	pid_t	pid;
 
 	pid = fork();
 	if (pid != 0)

@@ -6,13 +6,13 @@
 /*   By: mloureir <mloureir@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:09:09 by mloureir          #+#    #+#             */
-/*   Updated: 2023/12/28 12:32:44 by mloureir         ###   ########.fr       */
+/*   Updated: 2023/12/28 14:33:57 by mloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minitalk.h"
 
-void sendbyte(int c, pid_t pid)
+void	sendbyte(int c, pid_t pid)
 {
 	int	bits;
 
@@ -29,9 +29,9 @@ void sendbyte(int c, pid_t pid)
 	}
 }
 
-void passbytes(pid_t pid, char *str)
+void	passbytes(pid_t pid, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -41,9 +41,9 @@ void passbytes(pid_t pid, char *str)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	pid_t pid;
+	pid_t	pid;
 
 	if (argc == 3)
 	{
