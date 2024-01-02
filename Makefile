@@ -1,4 +1,4 @@
-NAME = minitalk
+NAME = server client
 SERVERN = server
 CLIENTN = client
 # :3
