@@ -44,9 +44,8 @@ int	main(void)
 {
 	pid_t	pid;
 
-	pid = fork();
-	if (pid != 0)
-		ft_printf("Your session PID: %i\n", pid);
+	pid = getpid();
+	ft_printf("Your session PID: %i\n", pid);
 	while (1)
 	{
 		signal(SIGUSR1, printbyte);
