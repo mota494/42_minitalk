@@ -12,12 +12,12 @@ SERVERSRC = srcserver/main.c
 CLIENTSRC = srcclient/main.c
 SERVEROBJ = $(SERVERSRC:.c=.o)
 CLIENTOBJ = $(CLIENTSRC:.c=.o)
-
+# <:3
 all: $(NAME)
 
 $(NAME) :  $(SERVEROBJ) $(CLIENTOBJ) $(LIBFT) $(PRINTF)
-	$(CC) $(SERVERSRC) -o $(SERVERN) $(LIBFT) $(PRINTF)
-	$(CC) $(CLIENTSRC) -o $(CLIENTN) $(LIBFT) $(PRINTF)
+	$(CC) $(FLAGS) $(SERVERSRC) -o $(SERVERN) $(LIBFT) $(PRINTF)
+	$(CC) $(FLAGS) $(CLIENTSRC) -o $(CLIENTN) $(LIBFT) $(PRINTF)
 
 $(LIBFT):
 	make -C include/libft
