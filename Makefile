@@ -44,7 +44,7 @@ clean:
 	make -C include/ft_printf clean
 	make -C include/libft clean
 
-fclean:
+fclean: clean
 	$(RM) $(SERVERN) $(CLIENTN) $(CLIENTNBONUS) $(SERVERNBONUS)
 	make -C include/ft_printf fclean
 	make -C include/libft fclean
