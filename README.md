@@ -7,15 +7,7 @@
 
 [![Static Badge](https://img.shields.io/badge/Music%20Suggestion-Click%20Me?style=for-the-badge&logo=YouTube&logoColor=%23000000&labelColor=%23FFFFFF&color=%23FF0000)](https://www.youtube.com/watch?v=_wUKGHPbn_k)
 
-# About
-
-</div>
-
-Minitalk is a project that belongs to the 42 common-core and it was the fifth project that I developed during it.
-
-Minitalk challenges the student to create two programs, a server which prints it's PID and the client which receives the server's PID and an user defined message to sent to the server. This works through [UNIX signals](https://www.math.stonybrook.edu/~ccc/dfc/dfc/signals.html) a tool that will be explained later in this document.
-
-<div align="center">
+<b>Creating communication between processes</b>
 
 ___
 
@@ -23,24 +15,87 @@ ___
 
 </div>
 
-> This project was tested only on UNIX based machines and it might not work properly on windows
+> [!Note]
+> The code won't be explained on this document
 
-To run this project both clang and gcc need to be installed.
+> [!Important]
+> This project wasn't tested on Windows machines and it was tested only on UNIX based systems
+> 
+> To run this project <b>both</b> [clang](https://clang.llvm.org/) and [gcc](https://gcc.gnu.org/) need to be installed.
 
-First clone the repo
+```bash
+git clone https://github.com/mota494/42_minitalk.git MM_minitalk
+cd MM_minitalk
+make
+./server
+./client SERVER_PID "YOUR_MESSAGE"
+```
+___
 
-`git clone https://github.com/mota494/42_minitalk.git MM_minitalk`
+<div align="center">
 
-Go to the directory created and run
+# Explanations
 
-`make`
-
-Firstly run server
-
-`./server` -> This will print the PID
-
-Open another terminal and run the client with the PID that the server gave you and the message you want to send
-
-`./client SERVER_PID "YOUR_MESSAGE"`
+### What are UNIX signals
 
 </div>
+
+Basically, a signal is a message which can be sent to a running process and can be created by the user through the terminal with the `kill` command or by other processes.
+
+To send a signal the process needs the targets PID (Process ID) and the signal that will be sent.
+
+Let's say that there's a process running with the PID 7328 and the intent is to terminate that process to do that we use it's PID and the proper signal, in this case, SIQGUIT:
+
+```bash
+kill 7328 SIGQUIT
+```
+
+There are a lot of pre defined signals that each do different stuff, in our case we will only use the SIGUSR1 and SIGUSR2 two signals that the function can only be determined by the user.
+
+___
+
+<div align="center">
+
+### Char to binary conversion
+
+</div>
+
+During my evaluations the evaluators were really curious about how i handled the conversion from char to binary since i "ran away" from using bitwise operations.
+
+The formula that i used is a very simple one and easy to understand, basically, you take the character received ASCII value and divided it by 2 seven times, if the remainder is 0 than that bit from the byte will be 0, if the remainder is not 0 than that bit will be a 1.
+
+<details>
+  <summary><h4>Example</h4></summary>
+    
+```
+A = 65
+
+65%2 = 1
+Octet: |1| | | | | | |
+65/2 ~= 32
+
+32%2 = 0
+Octet: |1|0| | | | | |
+32/2 = 16
+
+16%2 = 0
+Octet: |1|0|0| | | | |
+16/2 = 8
+
+8%2 = 0
+Octet: |1|0|0|0| | | |
+8/2 = 4
+
+4%2 = 0
+Octet: |1|0|0|0|0| | |
+4/2 = 2
+
+2%2 = 0
+Octet: |1|0|0|0|0|0| |
+2/2 = 1
+
+1%2 = 1
+Octet: |1|0|0|0|0|0|1|
+```
+
+</details>
